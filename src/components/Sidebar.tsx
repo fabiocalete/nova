@@ -3,10 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { useUser, SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 
 export default function Sidebar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useUser();
 
   const navigation = [
     {
@@ -94,6 +96,38 @@ export default function Sidebar() {
               );
             })}
           </nav>
+
+          {/* User Section */}
+          <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
+            <SignedIn>
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+                <UserButton 
+                  appearance={{
+                    elements: {
+                      userButtonAvatarBox: 'w-8 h-8',
+                    },
+                  }}
+                />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                    {user?.firstName || user?.emailAddresses[0]?.emailAddress}
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                    {user?.primaryEmailAddress?.emailAddress}
+                  </p>
+                </div>
+              </div>
+            </SignedIn>
+            <SignedOut>
+              <div className="p-3 text-center">
+                <SignInButton mode="modal">
+                  <button className="w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Sign In
+                  </button>
+                </SignInButton>
+              </div>
+            </SignedOut>
+          </div>
         </div>
       </div>
     </>
