@@ -8,6 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Build for production**: `npm run build` (uses Turbopack for faster builds)  
 - **Start production server**: `npm start`
 - **Lint code**: `npm run lint` (ESLint with Next.js configuration)
+- Dont ask to run npm run dev, it's usually running already
 
 ## Project Architecture
 

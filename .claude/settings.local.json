@@ -4,7 +4,12 @@
       "WebFetch(domain:docs.anthropic.com)",
       "Bash(mkdir:*)",
       "mcp__context7__resolve-library-id",
-      "mcp__context7__get-library-docs"
+      "mcp__context7__get-library-docs",
+      "Bash(git checkout:*)",
+      "mcp__REF__ref_search_documentation",
+      "mcp__REF__ref_read_url",
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)"
     ],
     "deny": []
   }

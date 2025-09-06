@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Main purple/lavender background */
+  --background: #B4A7E5;
+  --foreground: #1a1a1a;
+  
+  /* Dashboard inspired colors */
+  --sidebar-bg: #000000;
+  --sidebar-text: #ffffff;
+  --card-bg: #ffffff;
+  --accent-blue: #0066FF;
+  --accent-purple: #6B46C1;
+  --text-secondary: #6B7280;
+  --border-color: #E5E7EB;
+  
+  /* Chart colors */
+  --chart-blue: #3B82F6;
+  --chart-purple: #8B5CF6;
+  --chart-gradient-start: #6366F1;
+  --chart-gradient-end: #8B5CF6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-sidebar: var(--sidebar-bg);
+  --color-card: var(--card-bg);
+  --color-accent: var(--accent-blue);
+  --color-accent-purple: var(--accent-purple);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Keep the same aesthetic in dark mode */
+    --background: #B4A7E5;
+    --foreground: #1a1a1a;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* Custom utilities for dashboard components */
+@layer utilities {
+  .glass-effect {
+    @apply bg-white/90 backdrop-blur-sm;
+  }
+  
+  .card-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .sidebar-item-active {
+    @apply bg-[var(--accent-blue)] text-white;
+  }
 }

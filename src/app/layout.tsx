@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Nova Dashboard",
-  description: "Modern dashboard application built with Next.js",
+  description: "Modern dashboard application with beautiful analytics",
 };
 
 export default function RootLayout({
